@@ -12,12 +12,19 @@ class Snake:
 
     def create_snake(self):
         for position in STARTING_POSITIONS:
-            new_snake = Turtle(shape="square")
-            new_snake.color("white")
-            new_snake.penup()
-            new_snake.goto(position)
-            self.segments.append(new_snake)
+            self.add_segment(position)
+     
+    def add_segment(self, position):
+        new_snake = Turtle(shape="square")
+        new_snake.color("white")
+        new_snake.penup()        
+        new_snake.goto(position)
+        self.segments.append(new_snake)
     
+    def extend(self):
+        self.add_segment(self.segments[-1].position()) #add new segment to the end of the snake 
+        #(lists are 0 indexed)
+        
     def move(self):
         # range (start, stop, step), start length(segments)-1 to 0, step -1, use length so when 
         # snake grows , it still works 
