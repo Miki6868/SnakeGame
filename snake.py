@@ -49,4 +49,11 @@ class Snake:
     
     def right(self):
         if self.head.heading() != 180:
-            self.head.setheading(0)                
+            self.head.setheading(0)
+            
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000, 1000) #move segments off screen
+        self.segments.clear() #clear segments list
+        self.create_snake() #create new snake
+        self.head = self.segments[0] #reset head to first segment                        
